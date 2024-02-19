@@ -27,25 +27,24 @@ def add_contact(args, contacts):
 @input_error
 def change_contact(args, contacts):
     if args[0] in contacts.keys():
-        add_contact(args, contacts) 
+        add_contact(args, contacts)
     else:
-        return "User not found"
+        "Contact added."
 
 @input_error
-def show_phone(args,contacts):
-    name=args[0]    
-    return contacts[name]#если есть в словаре ключ-имя вернуть его значение-номер
+def show_phone(args,contacts):     
+    return contacts[args[0]]#если есть в словаре ключ-имя вернуть его значение-номер
 
 @input_error
 def show_all(args,contacts):
     s=''
-    for key in contacts: # вместо key можно использовать name
-        all_contacts +=(f"{key} : {contacts[key]}\n")#для приведения в таблицу можно задать {:tab} количество пробелов для обеих {}
-    return all_contacts
+    for key in contacts:
+        s+=(f"{key:10} : {contacts[key]}\n")
+    return s
 
 def main():
     contacts = {}
-    print("Welcome to the assistant bot!")
+    print("Welcome to the assistant bot! Ulyana!")
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
@@ -58,7 +57,7 @@ def main():
         elif command == "add":
             print(add_contact(args, contacts))
         elif command == "change":
-            print(change_contact(args, contacts))
+            print(add_contact(args, contacts))
         elif command == "show":
             print(show_phone(args,contacts))
         elif command == "all":
