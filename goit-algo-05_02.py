@@ -2,7 +2,7 @@ import re
 from typing import Callable
 
 def generator_numbers(text:str):
-    numbers = re.findall("\s\d+[\.,]?\d+\s",text)# , та . означають "або" в цьому виразі, а ? позначає, що попередній символ (, в даному випадку) може відсутній або відомий один раз.        
+    numbers = re.findall(" \d+[\.,]?\d+ ",text)# , та . означають "або" в цьому виразі, а ? позначає, що попередній символ (, в даному випадку) може відсутній або відомий один раз.        
     for number in numbers:         
         yield float(number)            
 
